@@ -156,7 +156,7 @@ def snapshot_cli():
     time.sleep(2)  # FIXME: allow time to connect
 
     db = Broker.named(args.broker_config)
-    RE = RunEngine({})
+    RE = RunEngine({}, scan_id_source=None)
     RE.subscribe(db.insert)
 
     uuid_list = RE(APS_plans.snapshot(obj_dict.values(), md=md))
